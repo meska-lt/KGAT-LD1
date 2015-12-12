@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		
+		{
+			"name": "Laboratorinis darbas 1",
+			"path": "./",
+			"file_exclude_patterns": ["*.sublime*", "initials", "*.o", "*.bmp"]
+		}
+	]
+}
