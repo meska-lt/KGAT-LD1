@@ -1,5 +1,7 @@
 COMPILER=g++
 EXECUTABLE=initials
+EXTENSION_APP_RESULT=.bmp
+EXTENSION_OBJECT=.o
 
 all: $(EXECUTABLE)
 
@@ -13,4 +15,4 @@ BMP24.o: BMP24.cpp
 	$(COMPILER) -c BMP24.cpp
 
 clean:
-	rm *.o *.bmp initials
+	rm *$(EXTENSION_OBJECT) *$(EXTENSION_APP_RESULT) $(EXECUTABLE)
