@@ -37,7 +37,8 @@ bool pointInsideTriangle(Point s, Point a, Point b, Point c) {
 }
 
 void drawTriangleInBitmap(BMP24 &pav, int c1x, int c1y, int c2x, int c2y, int c3x, int c3y) {
-	std::cout << "void drawTriangleInBitmap(BMP24, int, int, int, int, int, int);\n";
+	// std::cout << "void drawTriangleInBitmap(BMP24, int, int, int, int, int, int);\n";
+	std::cout << "void drawTriangleInBitmap(BMP24, " << c1x << ", " << c1y << ", " << c2x << ", " << c2y << ", " << c3x << ", " << c3y << ");\n";
 
 	for (int x = 0; x < RESULT_IMAGE_WIDTH; x++) {
 		for (int y = 0; y < RESULT_IMAGE_HEIGHT; y++) {
@@ -119,6 +120,36 @@ void drawInitialsInBitmap(BMP24 &bitmap) {
 	drawLetterKInBitmap(bitmap);
 }
 
+void openResultOnMac() {
+	const char *command = "open ";
+	const char *result = new char[strlen(command) + strlen(RESULT_FILENAME)+1];
+
+	strcpy(const_cast<char*>(result), command);
+	strcat(const_cast<char*>(result), RESULT_FILENAME);
+
+	system(result);
+}
+
+void openResultOnLinux() {
+	const char *command = "xdg-open ";
+	const char *result = new char[strlen(command) + strlen(RESULT_FILENAME)+1];
+
+	strcpy(const_cast<char*>(result), command);
+	strcat(const_cast<char*>(result), RESULT_FILENAME);
+
+	system(result);
+}
+
+void openResult() {
+	#ifdef __APPLE__
+		openResultOnMac();
+	#else
+  		#ifdef __linux__
+  			openResultOnLinux();
+  		#endif
+	#endif
+}
+
 int main() {
 	std::cout << "Programa darbą pradėjo.\n";
 
@@ -129,6 +160,8 @@ int main() {
 	drawInitialsInBitmap(resultImage);
 
 	resultImage.rasykIByla(RESULT_FILENAME);
+
+	openResult();
 
 	std::cout << "Programa darbą baigė.\n";
 }
