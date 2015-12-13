@@ -9,6 +9,8 @@
  */
 
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 #include "BMP24.h"
 
 #define RESULT_IMAGE_WIDTH 1000
